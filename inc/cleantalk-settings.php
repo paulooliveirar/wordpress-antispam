@@ -848,7 +848,7 @@ function apbct_settings__field__debug(){
 	
 	global $apbct;
 	
-	if($apbct->debug){
+	if($apbct->debug || true){
 		
 	echo '<hr /><h2>Debug:</h2>';
 	echo '<h4>Constants:</h4>';
