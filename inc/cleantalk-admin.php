@@ -717,6 +717,7 @@ function apbct_user__delete__hook($user_id, $reassign = null){
 function apbct_test_connection(){
     
     $url_to_test = array(
+        'https://api.cleantalk.org',
         'https://apix1.cleantalk.org',
         'https://apix2.cleantalk.org',
         'https://apix3.cleantalk.org',
