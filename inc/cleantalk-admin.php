@@ -43,7 +43,8 @@ function apbct_add_buttons_to_comments_and_users( $unused_argument ) {
 
 }
 
-add_action( 'admin_bar_menu', 'apbct_admin__admin_bar__add', 999 );
+add_action( 'admin_bar_menu', array( '\Cleantalk\ApbctWP\AdminBar', 'showAdminBar' ), 999, 1 );
+add_filter( 'cleantalk_admin_bar', 'apbct_admin__admin_bar__add', 10, 1 );
 
 //Adding widget
 function ct_dashboard_statistics_widget() {
@@ -540,7 +541,8 @@ function apbct_admin__admin_bar__add( $wp_admin_bar ) {
 							: '<span style="color: white;" title="'.__('Allowed / Blocked submissions. The number of submissions is being counted since ', 'cleantalk-spam-protect').' '.$user_counter['since'].'">'.$user_counter_str.'</span>	'.$daily_counter_str.$all_time_counter_str.$sfw_counter_str
 						)
 					.'</div>'
-				.'</div>' //You could change widget string here by simply deleting variables
+				.'</div>', //You could change widget string here by simply deleting variables
+			'parent' => 'cleantalk_common_parent_node'
 		);
 		$wp_admin_bar->add_node( $args );
 	
