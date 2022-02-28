@@ -34,16 +34,11 @@ abstract class Transaction
      *
      * @return void
      */
-    protected function init($params)
+    protected function init(\Cleantalk\Common\TransactionDTO $params)
     {
-        $params = array_merge(array(
-            'action_time' => $this->action_time,
-            'name'        => 'common',
-        ), $params);
-
-        $this->action_time            = $params['action_time'];
-        $this->tid_option_name        = 'cleantalk_transaction__' . $params['name'] . '_id';
-        $this->start_time_option_name = 'cleantalk_transaction__' . $params['name'] . '_start_time';
+        $this->action_time            = $params->action_time;
+        $this->tid_option_name        = 'cleantalk_transaction__' . $params->name . '_id';
+        $this->start_time_option_name = 'cleantalk_transaction__' . $params->name . '_start_time';
     }
 
     /**
@@ -56,7 +51,10 @@ abstract class Transaction
      */
     public static function get($instance_name, $action_time_s = 5)
     {
-        return static::getInstance($instance_name, array('name' => $instance_name, 'action_time' => $action_time_s));
+        $transaction_dto = new TransactionDTO();
+        $transaction_dto->name = $instance_name;
+        $transaction_dto->action_time = $action_time_s;
+        return static::getInstance($instance_name, $transaction_dto);
     }
 
     /**

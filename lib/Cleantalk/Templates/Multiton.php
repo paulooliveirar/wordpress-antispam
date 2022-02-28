@@ -12,11 +12,11 @@ trait Multiton
      * Constructor
      *
      * @param string $instance The wished instance
-     * @param null|array $params Additional parameters to pass in the init() method to initialize the instance
+     * @param \Cleantalk\Common\DTO $params Additional parameters to pass in the init() method to initialize the instance
      *
      * @return $this
      */
-    public static function getInstance($instance, $params = array())
+    public static function getInstance($instance, \Cleantalk\Common\DTO $params = null)
     {
         if ( ! isset(static::$instances[$instance]) ) {
             static::$instances[$instance] = new static();

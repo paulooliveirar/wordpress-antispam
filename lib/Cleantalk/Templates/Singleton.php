@@ -23,7 +23,7 @@ if (! trait_exists('Cleantalk\Templates\Singleton')) {
          * Constructor
          * @return $this
          */
-        public static function getInstance($params = array())
+        public static function getInstance(\Cleantalk\Common\DTO $params = null)
         {
             if ( ! isset(static::$instance) ) {
                 static::$instance = new static();
@@ -35,7 +35,7 @@ if (! trait_exists('Cleantalk\Templates\Singleton')) {
         /**
          * Alternative constructor
          */
-        protected function init()
+        protected function init(\Cleantalk\Common\DTO $params = null)
         {
         }
     }
